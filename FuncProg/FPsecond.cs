@@ -2,7 +2,8 @@ namespace FunctionalProgramming.Second;
 
 public class FPSecond
 {
-    public static void RunFPSecond() {
+    public static void RunFPSecond() 
+    {
         // See https://aka.ms/new-console-template for more information
         Console.WriteLine("Hello, Functional Programming!");
 
