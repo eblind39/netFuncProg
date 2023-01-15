@@ -61,4 +61,10 @@ public class MathStatistics
 
         Console.WriteLine($"\n>>> Weighted Sum: {WSum}");
     }
+
+    private static void PercentileCalc()
+    {
+        int[] nums = new int[]{ 20, 15, 31, 34, 35, 40, 50, 90, 99, 100 };
+        
+    }
 }
