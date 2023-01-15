@@ -1,6 +1,7 @@
 ﻿using FunctionalProgramming.Init;
 using FunctionalProgramming.Second;
 using FunctionalProgramming.SeriesGeneration;
+using FunctionalProgramming.Expressions;
 
 namespace FunctionalProgramming.Main;
 
@@ -14,6 +15,7 @@ public class FProg
         // FPInit.RunFPInit();
         // FPSecond.RunFPSecond();
         
-        MathStatistics.RunSamples();
+        // MathStatistics.RunSamples();
+        FPExpressions.FPExpressionSample();
     }
 }
