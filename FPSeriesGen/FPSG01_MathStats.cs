@@ -7,6 +7,7 @@ public class MathStatistics
     {
         DotProductVectors();
         PythagoreanTriplets();
+        IEnumAndLists();
     }
 
     static private void DotProductVectors()
@@ -24,15 +25,29 @@ public class MathStatistics
     {
         Console.WriteLine(">>> Pythagorean Triplets");
 
-        IEnumerable<RightTringle> pts = Enumerable.Range(2, 4)
+        IEnumerable<RightTringle> pts = Enumerable.Range(2, 10)
             .Select(c => new RightTringle{
                             Length = 2 * c,
                             Height = c * c - 1,
                             Hypotenuse = c * c + 1
-                        });
+                        }).ToList<RightTringle>();
 
-        Console.WriteLine("Length\t\t Height\t\t Hypotenuse:");
+        Console.WriteLine("SeedVal\t\t Length\t\t Height\t\t Hypotenuse:");
         foreach(RightTringle pt in pts) 
-            Console.WriteLine($"{pt.Length}\t\t {pt.Height}\t\t {pt.Hypotenuse}");
+            Console.WriteLine($"{pt.Length/2}\t\t {pt.Length}\t\t {pt.Height}\t\t {pt.Hypotenuse}");
+    }
+
+    static private void IEnumAndLists()
+    {
+        Console.WriteLine(">>> IEnumerable and Lists");
+
+        Func<int, bool> greatherThanTwo = x => x > 2;
+        List<int> numbers = new() { 1, 2, 3, 4, 5};
+        IEnumerable<bool> gtt = numbers.Select(greatherThanTwo);
+        numbers.Add(6);
+        foreach(bool bval in gtt) Console.WriteLine($"Greather Than Two? {bval.ToString()} ");
+
+        IEnumerable<int?> wnmbrs = numbers.Zip(gtt, (a, b) => (int?)(b ? a : null));
+        foreach(int? num in wnmbrs) Console.WriteLine($"Curr val: {num}");
     }
 }
