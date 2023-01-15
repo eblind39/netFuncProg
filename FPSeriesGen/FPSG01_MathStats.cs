@@ -1,3 +1,4 @@
+using FunctionalProgramming.Models;
 namespace FunctionalProgramming.SeriesGeneration;
 
 public class MathStatistics
@@ -23,15 +24,15 @@ public class MathStatistics
     {
         Console.WriteLine(">>> Pythagorean Triplets");
 
-        var pts = Enumerable.Range(2, 4)
-            .Select(c => new {
+        IEnumerable<RightTringle> pts = Enumerable.Range(2, 4)
+            .Select(c => new RightTringle{
                             Length = 2 * c,
                             Height = c * c - 1,
                             Hypotenuse = c * c + 1
                         });
 
         Console.WriteLine("Length\t\t Height\t\t Hypotenuse:");
-        foreach(var pt in pts) 
+        foreach(RightTringle pt in pts) 
             Console.WriteLine($"{pt.Length}\t\t {pt.Height}\t\t {pt.Hypotenuse}");
     }
 }
