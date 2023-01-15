@@ -8,6 +8,7 @@ public class MathStatistics
         DotProductVectors();
         PythagoreanTriplets();
         IEnumAndLists();
+        WeightedSum();
     }
 
     static private void DotProductVectors()
@@ -49,5 +50,15 @@ public class MathStatistics
 
         IEnumerable<int?> wnmbrs = numbers.Zip(gtt, (a, b) => (int?)(b ? a : null));
         foreach(int? num in wnmbrs) Console.WriteLine($"Curr val: {num}");
+    }
+
+    private static void WeightedSum()
+    {
+        int[] values = new int[]{ 1, 2, 3 };
+        int[] weights = new int[] { 3, 2 , 1 };
+
+        int WSum = values.Zip(weights, (value, weight) => value * weight).Sum();
+
+        Console.WriteLine($"\n>>> Weighted Sum: {WSum}");
     }
 }
