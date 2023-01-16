@@ -15,7 +15,7 @@ public class FProg
         // FPInit.RunFPInit();
         // FPSecond.RunFPSecond();
         
-        // MathStatistics.RunSamples();
-        FPExpressions.FPExpressionSample();
+        MathStatistics.RunSamples();
+        // FPExpressions.FPExpressionSample();
     }
 }

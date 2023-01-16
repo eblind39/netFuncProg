@@ -9,6 +9,7 @@ public class MathStatistics
         PythagoreanTriplets();
         IEnumAndLists();
         WeightedSum();
+        PercentileCalc();
     }
 
     static private void DotProductVectors()
@@ -64,7 +65,13 @@ public class MathStatistics
 
     private static void PercentileCalc()
     {
+        Console.WriteLine($"\n>>> Percentile Calc");
         int[] nums = new int[]{ 20, 15, 31, 34, 35, 40, 50, 90, 99, 100 };
-        
+        IEnumerable<KeyValuePair<int, double>> percentiles = nums
+        .ToLookup(k => k, k => nums.Where(n => n < k))
+        .Select(k => new KeyValuePair<int, double>(k.Key, 100*((double)k.First().Count() / (double)nums.Length)));
+
+        foreach(KeyValuePair<int, double> prct in percentiles)
+            Console.WriteLine($"{prct.Key}\t\t{prct.Value}");
     }
 }
