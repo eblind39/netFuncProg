@@ -10,6 +10,7 @@ public class MathStatistics
         IEnumAndLists();
         WeightedSum();
         PercentileCalc();
+        FindMark();
     }
 
     static private void DotProductVectors()
@@ -66,6 +67,7 @@ public class MathStatistics
     private static void PercentileCalc()
     {
         Console.WriteLine($"\n>>> Percentile Calc");
+
         int[] nums = new int[]{ 20, 15, 31, 34, 35, 40, 50, 90, 99, 100 };
         IEnumerable<KeyValuePair<int, double>> percentiles = nums
         .ToLookup(k => k, k => nums.Where(n => n < k))
@@ -74,4 +76,22 @@ public class MathStatistics
         foreach(KeyValuePair<int, double> prct in percentiles)
             Console.WriteLine($"{prct.Key}\t\t{prct.Value}");
     }
+
+    private static void FindMark()
+    {
+        Console.WriteLine($"\n>>> Find Mark");
+
+        int[] marks = new int[]{ 20 , 15, 31, 34, 50, 40, 90, 99, 100 };
+
+        IEnumerable<MarksRank> markranks =
+            marks
+            .ToLookup(k => k, k => marks.Where(n => n >= k))
+            .Select(k => new MarksRank{
+                Marks = k.Key,
+                Rank = 10 * ((double)k.First().Count() / (double)marks.Length)
+            });
+
+        foreach(MarksRank mrnk in markranks)
+            Console.WriteLine($"{mrnk.Marks}\t\t{mrnk.Rank}");
+    }       
 }
