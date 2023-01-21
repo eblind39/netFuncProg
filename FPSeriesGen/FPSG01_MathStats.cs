@@ -11,6 +11,7 @@ public class MathStatistics
         WeightedSum();
         PercentileCalc();
         FindMark();
+        ArrayDominator();
     }
 
     static private void DotProductVectors()
@@ -94,4 +95,12 @@ public class MathStatistics
         foreach(MarksRank mrnk in markranks)
             Console.WriteLine($"{mrnk.Marks}\t\t{mrnk.Rank}");
     }       
+
+    private static void ArrayDominator()
+    {
+        int[] intarr = new int[] { 3, 4, 3, 2, 3, -1, 3, 3 };
+        int dominator = intarr.ToLookup(a => a).First(a => a.Count() > intarr.Length/2).Key;
+
+        Console.WriteLine($">>> Array Dominator: {dominator}");
+    }
 }
