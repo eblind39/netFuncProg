@@ -12,6 +12,7 @@ public class MathStatistics
         PercentileCalc();
         FindMark();
         ArrayDominator();
+        MinCurrencyBills();
     }
 
     static private void DotProductVectors()
@@ -102,5 +103,28 @@ public class MathStatistics
         int dominator = intarr.ToLookup(a => a).First(a => a.Count() > intarr.Length/2).Key;
 
         Console.WriteLine($">>> Array Dominator: {dominator}");
+    }
+
+    private static void MinCurrencyBills()
+    {
+        Console.WriteLine($"\n>>> Min Currency Bills");
+
+        // these are available currencies
+        int[] curvals = new int[]{ 1000, 500, 200, 100, 50, 20, 10, 5, 1 };
+
+        int amount = 2548;
+        int tmpAmount = amount;
+
+        Dictionary<int, int> map = new Dictionary<int, int>();
+
+        curvals.OrderByDescending(c => c)
+            .ToList()
+            .ForEach(c => { map.Add(c, amount/c); amount = amount % c; });
+
+        IEnumerable<KeyValuePair<int, int>> dominations = map.Where(m => m.Value != 0);
+
+        Console.WriteLine($"For: {tmpAmount}");
+        foreach(KeyValuePair<int, int> curval in dominations)
+            Console.WriteLine($"{curval.Key}\t\t\t{curval.Value}");
     }
 }
