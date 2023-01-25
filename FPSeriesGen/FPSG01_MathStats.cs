@@ -13,6 +13,7 @@ public class MathStatistics
         FindMark();
         ArrayDominator();
         MinCurrencyBills();
+        MovingAverages();
     }
 
     static private void DotProductVectors()
@@ -126,5 +127,24 @@ public class MathStatistics
         Console.WriteLine($"For: {tmpAmount}");
         foreach(KeyValuePair<int, int> curval in dominations)
             Console.WriteLine($"{curval.Key}\t\t\t{curval.Value}");
+    }
+
+    private static void MovingAverages()
+    {
+        Console.WriteLine($"\n>>> Moving Averages");
+
+        List<double> numbers = new List<double>(){1, 2, 3, 4};
+        List<double> movingAvgs = new List<double>();
+
+        // moving window is of length 4.
+        int windowSize = 2;
+
+        Enumerable.Range(0, numbers.Count - windowSize + 1)
+            .ToList()
+            .ForEach(k => movingAvgs.Add(numbers.Skip(k).Take(windowSize).Average()));
+        
+        // listing moving averages
+        foreach(double mvgavg in movingAvgs)
+            Console.WriteLine($"{mvgavg}");
     }
 }
