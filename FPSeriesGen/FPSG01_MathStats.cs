@@ -14,6 +14,7 @@ public class MathStatistics
         ArrayDominator();
         MinCurrencyBills();
         MovingAverages();
+        CummulativeSum();
     }
 
     static private void DotProductVectors()
@@ -146,5 +147,18 @@ public class MathStatistics
         // listing moving averages
         foreach(double mvgavg in movingAvgs)
             Console.WriteLine($"{mvgavg}");
+    }
+
+    private static void CummulativeSum()
+    {
+        Console.WriteLine($"\n>>> Cummulative Sum");
+
+        List<KeyValuePair<int, int>> cumSums = new List<KeyValuePair<int, int>>();
+        IEnumerable<int> range = Enumerable.Range(1, 10);
+        range.ToList().ForEach(k => cumSums.Add(
+            new KeyValuePair<int, int>(k, range.Take(k).Sum())));
+        
+        foreach(KeyValuePair<int, int> csum in cumSums)
+            Console.WriteLine($"{csum.Key}\t\t{csum.Value}");
     }
 }
