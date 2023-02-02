@@ -16,6 +16,7 @@ public class MathStatistics
         MovingAverages();
         CummulativeSum();
         LSystemGrammar();
+        AlgaeGrowth();
     }
 
     static private void DotProductVectors()
@@ -176,5 +177,25 @@ public class MathStatistics
             .ForEach(k => algae = transformB(transformA(marksBs(algae))));
 
         Console.WriteLine($">>> Algae at 7th iteration: {algae}");
+    }
+
+    private static void AlgaeGrowth()
+    {
+        Console.WriteLine($">>> Algae growth in each iteration");
+
+        string algae = "A";
+
+        Func<string, string> transformA = x => x.Replace("A", "B");
+        Func<string, string> marksBs = x => x.Replace("B", "[B]");
+        Func<string, string> transformB = x => x.Replace("[B]", "A");
+
+        int length = 7;
+        IEnumerable<KeyValuePair<int, string>> result = Enumerable.Range(1, length)
+            .Select(k => new KeyValuePair<int, string>(
+                k, algae = transformB(transformA(marksBs(algae)))
+            ));
+        
+        foreach(KeyValuePair<int, string> rslt in result)
+            Console.WriteLine($"{rslt.Key}\n\n{rslt.Value}");
     }
 }
