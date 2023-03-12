@@ -19,6 +19,7 @@ public class MathStatistics
         AlgaeGrowth();
         KochCurve();
         SierpinskiTriangle();
+        Fibonacci();
     }
 
     static private void DotProductVectors()
@@ -251,5 +252,24 @@ public class MathStatistics
 
         Console.WriteLine(">>> Sierpinski Triangle: LOGO commands for drawing the <-");
         Console.WriteLine(sierpinskiTriangle);
+    }
+
+    private static void Fibonacci()
+    {
+        Console.WriteLine(">>> Fibonacci Numbers");
+        List<ulong> fibonacciNumbers = new List<ulong>();
+        Enumerable.Range(0, 200)
+            .ToList()
+            .ForEach(k =>
+                fibonacciNumbers.Add(k <= 1 ? 1 :
+                fibonacciNumbers[k - 2] + fibonacciNumbers[k - 1]));
+
+        int counter = 0;
+        fibonacciNumbers.ForEach(k =>
+        {
+            if (counter <= 10)
+                Console.WriteLine($"Fib Number: {k}");
+            counter++;
+        });
     }
 }
